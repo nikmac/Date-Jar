@@ -1,0 +1,32 @@
+from django.conf.urls import patterns, include, url
+from django.contrib import admin
+
+urlpatterns = patterns('',
+    # Examples:
+    # url(r'^$', 'date_night.views.home', name='home'),
+    # url(r'^blog/', include('blog.urls')),
+    url(r'^$', 'date_jar.views.home', name='home'),
+    url(r'^register/$', 'date_jar.views.register', name='register'),
+    url(r'^login/$', 'django.contrib.auth.views.login', name='login'),
+    url(r'^logout/$', 'django.contrib.auth.views.logout', name='logout'),
+    url(r'^password_reset/$', 'django.contrib.auth.views.password_reset', name='password_reset'),
+    url(r'^password_reset/done/$', 'django.contrib.auth.views.password_reset_done', name='password_reset_done'),
+    url(r'^reset/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$',
+    'django.contrib.auth.views.password_reset_confirm',
+    name='password_reset_confirm'),
+    url(r'^reset/done/$', 'django.contrib.auth.views.password_reset_complete', name='password_reset_complete'),
+    url(r'^profile/$', 'date_jar.views.profile', name='profile'),
+    url(r'^adventure/$', 'date_jar.views.adventure', name='adventure'),
+    url(r'^classic/$', 'date_jar.views.classic', name='classic'),
+    url(r'^date_night_fun/$', 'date_jar.views.date_night_fun', name='date_night_fun'),
+    url(r'^day_trip/$', 'date_jar.views.day_trip', name='day_trip'),
+    url(r'^eat_drink/$', 'date_jar.views.eat_drink', name='eat_drink'),
+    url(r'^fun_home/$', 'date_jar.views.fun_home', name='fun_home'),
+    url(r'^get_sporty/$', 'date_jar.views.get_sporty', name='get_sporty'),
+    url(r'^learn/$', 'date_jar.views.learn', name='learn'),
+    url(r'^weekend/$', 'date_jar.views.weekend', name='weekend'),
+    url(r'^new_event/$', 'date_jar.views.new_event', name='new_event'),
+    url(r'^add_event/(\d+)', 'date_jar.views.add_event', name='add_event'),
+    url(r'^admin/', include(admin.site.urls)),
+)
+#url(r'^blogpost_view/(?P<blogpost_id>\w+)/$', 'blog.views.blogpost_view', name='blogpost_view'),

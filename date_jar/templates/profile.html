@@ -1,0 +1,40 @@
+{% extends "base_template.html" %}
+
+{% block title %}{% endblock title %}
+
+{% block link %} {% endblock link %}
+
+{% block content %}
+<section>
+        <h1 class="welcome">Welcome to your Date Jar, {{ user.username | capfirst }}</h1>
+        <a href="{% url 'new_event' %}">Add a Date</a>
+        <a href="{% url 'home' %}">Browse for ideas</a>
+        <section id="lists">
+            <ul id="dates">
+                <h4>Dates</h4>
+                {% for d in dates %}
+                    <li>{{ d.name }},<br>{{ d.description }},<br>{{ d.location }},
+                        <br><a href="{{ d.url }}">Website</a>,
+                        <br>{{ d.address }},
+                        <br><img src="{{ d.image }}"></li>
+                {% endfor %}
+            </ul>
+        </section>
+        <section>
+            <ul id="dated">
+                <h4>Dated</h4>
+                {% for d in dated %}
+                    <li>{{ d.name }},<br>{{ d.description }},<br>{{ d.location }},
+                        <br><a href="{{ d.url }}">Website</a>,
+                        <br>{{ d.address }},
+                        <br><img src="{{ d.image }}"></li>
+                {% endfor %}
+            </ul>
+        </section>
+</section>
+
+
+
+{% endblock content %}
+
+

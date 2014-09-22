@@ -1,0 +1,47 @@
+{% extends "base_template.html" %}
+
+{% block title %}{% endblock title %}
+
+{% block link %}
+{% endblock link %}
+
+{% block content %}
+    <h1>Welcome To Date Jar</h1>
+    <p>Ever catch yourself saying, "We should do that sometime."?  Put it in the Date Night Jar and
+       next time you have a free night, pull out an idea.</p>
+    <p> No more, "I don't care, what do you want to do?"</p>
+
+    <section id="primary">
+        <h3>Need some inspiration?  Check out our</h3>
+        <h3>Categories</h3>
+        <ul>
+            <li>Date Night Fun</li>
+            <li>Eat & Drink</li>
+            <li>Fun at Home</li>
+            <li>Get Sporty</li>
+            <li>Day Trip Dates</li>
+            <li><a href="{% url "adventure" %}">Adventure</a></li>
+            <li>The Classics</li>
+            <li>Learn Together</li>
+            <li>The Weekender</li>
+        </ul>
+    </section>
+    <section id="secondary">
+        <ul>
+            <li>Login or Register</li>
+            To start your Jar
+        </ul>
+    </section>
+    <section>
+        <h3>Date Picker</h3>
+        <h4>Give us some parameters and let us suggest a date:</h4>
+        <ul>
+            <li>form with basic info</li>
+        </ul>
+    </section>
+
+
+
+{% endblock content %}
+
+

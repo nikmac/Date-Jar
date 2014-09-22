@@ -1,0 +1,30 @@
+{% extends "base_template.html" %}
+
+{% block title %}{% endblock title %}
+
+{% block link %} {% endblock link %}
+
+{% block content %}
+    <h1>Adventure!</h1>
+    <section>
+        <ul id="gallery">
+            {% for item in data %}
+            <li>
+                <h1>{{ item.name }}</h1>
+                <p>{{ item.description }}</p>
+                <p>{{ item.location }}</p>
+                <a href="{{ item.url }}" target=_blank> Check it out</a>
+                <p>{{ item.address }}</p>
+                <img src="{{ item.image }}"/>
+                <!--a href="{% url 'add_event' item.id %}">Add Event!</a-->
+
+                <form action="/add_event/{{ item.id }}" method="POST">
+                {% csrf_token %}
+                <input type="submit" value="Add to Date Jar"/></form>
+                </li>
+            {% endfor %}
+        </ul>
+    </section>
+
+{% endblock content %}
+
