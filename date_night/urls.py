@@ -27,6 +27,8 @@ urlpatterns = patterns('',
     url(r'^weekend/$', 'date_jar.views.weekend', name='weekend'),
     url(r'^new_event/$', 'date_jar.views.new_event', name='new_event'),
     url(r'^add_event/(\d+)', 'date_jar.views.add_event', name='add_event'),
+    url(r'^remove_event/(\d+)', 'date_jar.views.remove_event', name='remove_event'),
+    url(r'^done/(?P<event_id>\d+)/$', 'date_jar.views.done', name='done'),
     url(r'^admin/', include(admin.site.urls)),
 )
 #url(r'^blogpost_view/(?P<blogpost_id>\w+)/$', 'blog.views.blogpost_view', name='blogpost_view'),

@@ -25,12 +25,13 @@ class AddEvent(forms.ModelForm):
         fields = ('name', 'description','category','location','url', 'address', 'image', )
 
 
-# class RemoveEvent(forms.ModelForm):
-#     name = forms.CharField(required=True, max_length=40)
-#
-#     class Meta:
-#         model = Event
-#         fields = ('name', 'description','category','location','url', 'address', 'image', )
+
+class RemoveEvent(forms.ModelForm):
+    name = forms.CharField(required=True, max_length=40)
+
+    class Meta:
+        model = Event
+        fields = ('name', 'description','category','location','url', 'address', 'image', )
 
 # class EditProfile(forms.ModelForm):
     # username = None

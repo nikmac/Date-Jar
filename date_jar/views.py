@@ -1,7 +1,7 @@
 from django.contrib.auth.decorators import login_required
 
 from django.shortcuts import render, redirect
-from date_jar.forms import EmailUserCreationForm, NewEvent, AddEvent
+from date_jar.forms import EmailUserCreationForm, NewEvent, AddEvent, RemoveEvent
 from date_jar.models import Category, Event
 
 
@@ -12,13 +12,17 @@ def home(request):
 
 def profile(request):
     current_user = request.user
-    # if not current_user.event.exists():
-    #     current_user.event.create(name='name', user='user',)
-
     dates = current_user.event.filter(done=False)
     dated = current_user.event.filter(done=True)
-    #data = {'dates': dates, 'dated': dated}
     return render(request, 'profile.html', locals())
+
+
+def done(request, event_id):
+    #dated = current_user.event.filter(done=True)
+    event = Event.objects.get(id=event_id)
+    event.learned = True
+    event.save()
+    return redirect('profile')
 
 
 def adventure(request):
@@ -118,7 +122,7 @@ def new_event(request):
                                                  address=form.cleaned_data['address'],
                                                  image=form.cleaned_data['image'],)
             current_event.users.add(request.user)
-            # current_event.event = Event.objects.filter(text__icontains=current_event)
+
 
             if current_event.event.count() == 0:
                 current_event.delete()
@@ -142,12 +146,13 @@ def add_event(request, event_id):
 
     return render(request, 'profile.html', {'form': form, 'error_message': ''})
 
-# def remove_event(request, event_id):
-#     form = RemoveEvent(request.POST)
-#     current_user = request.user
-#     event = Event.objects.get(id=event_id)
-#     event.user.delete(current_user)
-#     event.save()
-#
-#     return render(request, 'profile.html', {'form': form, 'error_message': ''})
+
+def remove_event(request, event_id):
+    form = RemoveEvent(request.POST)
+    current_user = request.user
+    event = Event.objects.get(id=event_id)
+    event.user.remove(current_user)
+    event.save()
+
+    return render(request, 'profile.html', {'form': form, 'error_message': ''})
 
