@@ -179,12 +179,12 @@ nav {
 background: #848c9a;
 }
 /* logo text */
-h1, h2 {
+h1, h2, h3 {
 color: #253c67;
 }
 /* links */
 a {
-color: #6ab47b;
+color: #253c67;
 }
 /* nav link */
 nav a, nav a:visited {

@@ -7,8 +7,8 @@
 {% block content %}
 <section>
         <h1 class="welcome">Welcome to your Date Jar, {{ user.username | capfirst }}</h1>
-        <a href="{% url 'new_event' %}">Add a Date</a>
-        <a href="{% url 'home' %}">Browse for ideas</a>
+        <h3><a href="{% url 'new_event' %}">Add a Date</a> or
+        <a href="{% url 'home' %}">Browse for ideas</a></h3>
         <section id="lists">
             <ul id="dates">
                 <h4>Dates</h4>
@@ -16,7 +16,8 @@
                     <li>{{ d.name }},<br>{{ d.description }},<br>{{ d.location }},
                         <br><a href="{{ d.url }}">Website</a>,
                         <br>{{ d.address }},
-                        <br><img src="{{ d.image }}"></li>
+                        <br><img src="{{ d.image }}">
+                    <br> (Place for move to dated link)</li>
                 {% endfor %}
             </ul>
         </section>
