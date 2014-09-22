@@ -115,7 +115,6 @@ def new_event(request):
 
 
 def add_event(request, event_id):
-    #if request.method == "POST":
     form = AddEvent(request.POST)
     current_user = request.user
     # Get the Event object for this event
@@ -126,4 +125,13 @@ def add_event(request, event_id):
     event.save()
 
     return render(request, 'profile.html', {'form': form, 'error_message': ''})
+
+# def remove_event(request, event_id):
+#     form = RemoveEvent(request.POST)
+#     current_user = request.user
+#     event = Event.objects.get(id=event_id)
+#     event.user.delete(current_user)
+#     event.save()
+#
+#     return render(request, 'profile.html', {'form': form, 'error_message': ''})
 
