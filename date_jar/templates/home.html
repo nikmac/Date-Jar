@@ -15,20 +15,20 @@
         <h3>Need some inspiration?  Check out our</h3>
         <h3>Categories</h3>
         <ul>
-            <li>Date Night Fun</li>
-            <li>Eat & Drink</li>
-            <li>Fun at Home</li>
-            <li>Get Sporty</li>
-            <li>Day Trip Dates</li>
+            <li><a href="{% url "date_night_fun" %}">Date Night Fun</a></li>
+            <li><a href="{% url "eat_drink" %}">Eat & Drink</a></li>
+            <li><a href="{% url "fun_home" %}">Fun @ Home</a></li>
+            <li><a href="{% url "get_sporty" %}">Get Sporty</a></li>
+            <li><a href="{% url "day_trip" %}">Day Trip Dates</a></li>
             <li><a href="{% url "adventure" %}">Adventure</a></li>
-            <li>The Classics</li>
-            <li>Learn Together</li>
-            <li>The Weekender</li>
+            <li><a href="{% url "classic" %}">The Classics</a></li>
+            <li><a href="{% url "learn" %}">Learn Together</a></li>
+            <li><a href="{% url "weekend" %}">The Weekender</a></li>
         </ul>
     </section>
     <section id="secondary">
         <ul>
-            <li>Login or Register</li>
+            <li><a href="{% url "login" %}">Login</a> or <a href="{% url "register" %}">Register</a></li>
             To start your Jar
         </ul>
     </section>

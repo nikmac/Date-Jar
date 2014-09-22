@@ -27,28 +27,44 @@ def adventure(request):
     return render(request, 'categories/adventure.html', locals())
 
 def classic(request):
-    return render(request, 'categories/classic.html')
+    cat = Category.objects.filter(name="The Classics")
+    data = Event.objects.filter(category=cat)
+    return render(request, 'categories/classic.html', locals())
 
 def date_night_fun(request):
-    return render(request, 'categories/date_night_fun.html')
+    cat = Category.objects.filter(name="Date Night Fun")
+    data = Event.objects.filter(category=cat)
+    return render(request, 'categories/date_night_fun.html', locals())
 
 def day_trip(request):
-    return render(request, 'categories/day_trip.html')
+    cat = Category.objects.filter(name="Day Trip Dates")
+    data = Event.objects.filter(category=cat)
+    return render(request, 'categories/day_trip.html', locals())
 
 def eat_drink(request):
-    return render(request, 'categories/eat_drink.html')
+    cat = Category.objects.filter(name="Eat & Drink")
+    data = Event.objects.filter(category=cat)
+    return render(request, 'categories/eat_drink.html', locals())
 
 def fun_home(request):
-    return render(request, 'categories/fun_home.html')
+    cat = Category.objects.filter(name="Fun @ Home")
+    data = Event.objects.filter(category=cat)
+    return render(request, 'categories/fun_home.html', locals())
 
 def get_sporty(request):
-    return render(request, 'categories/get_sporty.html')
+    cat = Category.objects.filter(name="Get Sporty")
+    data = Event.objects.filter(category=cat)
+    return render(request, 'categories/get_sporty.html', locals())
 
 def learn(request):
-    return render(request, 'categories/learn.html')
+    cat = Category.objects.filter(name="Learn Together")
+    data = Event.objects.filter(category=cat)
+    return render(request, 'categories/learn.html', locals())
 
 def weekend(request):
-    return render(request, 'categories/weekend.html')
+    cat = Category.objects.filter(name="The Weekender")
+    data = Event.objects.filter(category=cat)
+    return render(request, 'categories/weekend.html', locals())
 
 def register(request):
     if request.method == "POST":

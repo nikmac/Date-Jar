@@ -13,6 +13,7 @@
             <ul id="dates">
                 <h4>Dates</h4>
                 {% for d in dates %}
+                    <h4>{{ d.category }}</h4>
                     <li>{{ d.name }},<br>{{ d.description }},<br>{{ d.location }},
                         <br><a href="{{ d.url }}">Website</a>,
                         <br>{{ d.address }},
