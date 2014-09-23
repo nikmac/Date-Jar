@@ -146,8 +146,8 @@ def new_event(request):
             #return redirect('profile')
     else:
         form = NewEvent()
-    #return render(request, "new_event.html", {'form': form, 'error_message': ''})
-    return redirect('profile')
+    return render(request, "new_event.html", {'form': form, 'error_message': ''})
+    #return redirect('profile')
 
 
 def add_event(request, event_id):
