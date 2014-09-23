@@ -1,3 +1,4 @@
+import random
 from django.contrib.auth.decorators import login_required
 
 from django.shortcuts import render, redirect
@@ -18,9 +19,12 @@ def profile(request):
 
 
 def done(request, event_id):
+    current_user = request.user
     event = Event.objects.get(id=event_id)
+    #event.user.done = True
     event.done = True
     event.save()
+
     return redirect('profile')
 
 
@@ -30,8 +34,14 @@ def remove_event(request, event_id):
     event = Event.objects.get(id=event_id)
     event.user.remove(current_user)
     event.save()
+    return redirect('profile')
+    #return render(request, 'profile.html', {'form': form, 'error_message': ''})
 
-    return render(request, 'profile.html', {'form': form, 'error_message': ''})
+
+def show_random(request):
+    random_idx = random.randint(0, Event.objects.count() - 1)
+    random_obj = Event.objects.all()[random_idx]
+    return render(request, "home.html", random_obj)
 
 
 def adventure(request):
@@ -90,10 +100,6 @@ def register(request):
     return render(request, "registration/register.html", {'form': form})
 
 
-class EditProfile(object):
-    pass
-
-
 # @login_required()
 # def edit_profile(request):
 #     if request.method == "POST":
@@ -130,17 +136,18 @@ def new_event(request):
                                                  url=form.cleaned_data['url'],
                                                  address=form.cleaned_data['address'],
                                                  image=form.cleaned_data['image'],)
-            current_event.users.add(request.user)
+            current_event.user.add(request.user)
 
 
-            if current_event.event.count() == 0:
-                current_event.delete()
-                error = "..."
-                return render(request, 'new_event.html', {'form': form, 'error_message': error})
-            return redirect('profile')
+            #if current_event.count() == 0:
+            #    current_event.delete()
+            #    error = "..."
+            #    return render(request, 'new_event.html', {'form': form, 'error_message': error})
+            #return redirect('profile')
     else:
         form = NewEvent()
-    return render(request, "new_event.html", {'form': form, 'error_message': ''})
+    #return render(request, "new_event.html", {'form': form, 'error_message': ''})
+    return redirect('profile')
 
 
 def add_event(request, event_id):
@@ -152,5 +159,5 @@ def add_event(request, event_id):
     event.user.add(current_user)
     # Save the event
     event.save()
-
-    return render(request, 'profile.html', {'form': form, 'error_message': ''})
+    return redirect('profile')
+    #return render(request, 'profile.html', {'form': form, 'error_message': ''})

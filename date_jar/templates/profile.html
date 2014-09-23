@@ -10,30 +10,29 @@
         <h3><a href="{% url 'new_event' %}">Add a Date</a> or
         <a href="{% url 'home' %}">Browse for ideas</a></h3>
         <section id="lists">
-            <ul id="dates">
-                <h4>Dates</h4>
+            <ul id="gallery">
+                <h3>Dates</h3>
                 {% for d in dates %}
                     <li>
                         <h4>{{ d.category }}</h4>
-                        {{ d.name }},<br>{{ d.description }},<br>{{ d.location }},
+                        <p>{{ d.name }},<br>{{ d.description }},<br>{{ d.location }},
                         <br><a href="{{ d.url }}">Website</a>,
                         <br>{{ d.address }},
-                        <br><img src="{{ d.image }}"><br>
+                        <br><img src="{{ d.image }}"><br></p>
                         <a href="{% url 'done' d.id %}">Did it!</a><br>
 {#                        here i am !!!!!!!!!!!!!!!!!!!!!{{ d.id }}!!!!!!!!!!!!!!#}
                         <a href="{% url 'remove_event' d.id %}">Delete it!</a>
                     </li>
                 {% endfor %}
-            </ul>
-        </section>
-        <section>
-            <ul id="dated">
-                <h4>Past Dates I liked</h4>
+---------------------------------------------------------------------------------------------------
+                <h3>Past Dates</h3>
                 {% for d in dated %}
-                    <li>{{ d.name }},<br>{{ d.description }},<br>{{ d.location }},
+                    <li>
+                        <h4>{{ d.category }}</h4>
+                        <p>{{ d.name }},<br>{{ d.description }},<br>{{ d.location }},
                         <br><a href="{{ d.url }}">Website</a>,
                         <br>{{ d.address }},
-                        <br><img src="{{ d.image }}">
+                        <br><img src="{{ d.image }}"></p>
                     <a href="{% url 'remove_event' d.id %}">Delete it!</a>
 
                     </li>

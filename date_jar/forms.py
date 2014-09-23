@@ -33,6 +33,10 @@ class RemoveEvent(forms.ModelForm):
         model = Event
         fields = ('name', 'description','category','location','url', 'address', 'image', )
 
+
+# class RandomEvent(forms.ModelForm):
+
+
 # class EditProfile(forms.ModelForm):
     # username = None
     # password1 = None
