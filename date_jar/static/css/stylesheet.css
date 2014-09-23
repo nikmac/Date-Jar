@@ -111,7 +111,7 @@ border-radius: 100%
 
 
 #dates li{
-    margin: 2.5;
+    margin: 2.5%;
     padding: 5%;
     list-style: none;
     float: left;
@@ -120,12 +120,12 @@ border-radius: 100%
     color: #bdc3c7;
     border-radius: 25%;
 }
-#dated{
+/*#dated{*/
 
-    clear: left;
-}
+    /*clear: left;*/
+/*}*/
 #dated li{
-    margin: 2.5;
+    margin: 2.5%;
     padding: 5%;
     list-style: none;
     float: right;
@@ -152,15 +152,7 @@ background-size: 20px 20px;
 padding: 0 0 0 30px;
 margin: 0 0 10px;
 }
-.contact-info li.phone a {
-background-image: url('phone.png');
-}
-.contact-info li.mail a {
-background-image: url('mail.png');
-}
-.contact-info li.twitter a {
-background-image: url('twitter.png');
-}
+
 /**********************
 Colors
 **********************/

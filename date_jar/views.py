@@ -18,11 +18,20 @@ def profile(request):
 
 
 def done(request, event_id):
-    #dated = current_user.event.filter(done=True)
     event = Event.objects.get(id=event_id)
-    event.learned = True
+    event.done = True
     event.save()
     return redirect('profile')
+
+
+def remove_event(request, event_id):
+    form = RemoveEvent(request.POST)
+    current_user = request.user
+    event = Event.objects.get(id=event_id)
+    event.user.remove(current_user)
+    event.save()
+
+    return render(request, 'profile.html', {'form': form, 'error_message': ''})
 
 
 def adventure(request):
@@ -145,14 +154,3 @@ def add_event(request, event_id):
     event.save()
 
     return render(request, 'profile.html', {'form': form, 'error_message': ''})
-
-
-def remove_event(request, event_id):
-    form = RemoveEvent(request.POST)
-    current_user = request.user
-    event = Event.objects.get(id=event_id)
-    event.user.remove(current_user)
-    event.save()
-
-    return render(request, 'profile.html', {'form': form, 'error_message': ''})
-

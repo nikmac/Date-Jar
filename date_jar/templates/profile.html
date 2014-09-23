@@ -13,15 +13,15 @@
             <ul id="dates">
                 <h4>Dates</h4>
                 {% for d in dates %}
-                    <h4>{{ d.category }}</h4>
-                    <li>{{ d.name }},<br>{{ d.description }},<br>{{ d.location }},
+                    <li>
+                        <h4>{{ d.category }}</h4>
+                        {{ d.name }},<br>{{ d.description }},<br>{{ d.location }},
                         <br><a href="{{ d.url }}">Website</a>,
                         <br>{{ d.address }},
                         <br><img src="{{ d.image }}"><br>
-                        <a href="{% url 'dated' event.id %}">Did it!</a>
-                        <form action="/remove_event/{{ item.id }}" method="POST">
-                {% csrf_token %}
-                <input type="submit" value="Remove from Date Jar"/></form>
+                        <a href="{% url 'done' d.id %}">Did it!</a><br>
+{#                        here i am !!!!!!!!!!!!!!!!!!!!!{{ d.id }}!!!!!!!!!!!!!!#}
+                        <a href="{% url 'remove_event' d.id %}">Delete it!</a>
                     </li>
                 {% endfor %}
             </ul>
@@ -33,7 +33,10 @@
                     <li>{{ d.name }},<br>{{ d.description }},<br>{{ d.location }},
                         <br><a href="{{ d.url }}">Website</a>,
                         <br>{{ d.address }},
-                        <br><img src="{{ d.image }}"></li>
+                        <br><img src="{{ d.image }}">
+                    <a href="{% url 'remove_event' d.id %}">Delete it!</a>
+
+                    </li>
                 {% endfor %}
             </ul>
         </section>
