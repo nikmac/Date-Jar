@@ -70,7 +70,7 @@ def eat_drink(request):
     return render(request, 'categories/eat_drink.html', locals())
 
 def fun_home(request):
-    cat = Category.objects.filter(name="Fun @ Home")
+    cat = Category.objects.filter(name="Fun at Home")
     data = Event.objects.filter(category=cat)
     return render(request, 'categories/fun_home.html', locals())
 
