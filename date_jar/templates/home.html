@@ -1,46 +1,41 @@
 {% extends "base_template.html" %}
-
-{% block title %}{% endblock title %}
-
-{% block link %}
-{% endblock link %}
+{% block title %}Date Jar Home{% endblock title %}
+{% block link %}{% endblock link %}
 
 {% block content %}
-    <h1 class="welcome">Welcome To Date Jar</h1>
-    <p>Ever catch yourself saying, "We should do that sometime."?  Put it in the Date Night Jar and
-       next time you have a free night, pull out an idea.</p>
-    <p> No more, "I don't care, what do you want to do?"</p>
 
-    <section id="primary">
-        <h3>Need some inspiration?  Check out our</h3>
-        <h3>Categories</h3>
-        <ul>
-            <li><a href="{% url "date_night_fun" %}">Date Night Fun</a></li>
-            <li><a href="{% url "eat_drink" %}">Eat & Drink</a></li>
-            <li><a href="{% url "fun_home" %}">Fun @ Home</a></li>
-            <li><a href="{% url "get_sporty" %}">Get Sporty</a></li>
-            <li><a href="{% url "day_trip" %}">Day Trip Dates</a></li>
-            <li><a href="{% url "adventure" %}">Adventure</a></li>
-            <li><a href="{% url "classic" %}">The Classics</a></li>
-            <li><a href="{% url "learn" %}">Learn Together</a></li>
-            <li><a href="{% url "weekend" %}">The Weekender</a></li>
-        </ul>
-    </section>
-    <section id="secondary">
-        <ul>
-            <li><a href="{% url "login" %}">Login</a> or <a href="{% url "register" %}">Register</a></li>
-            To start your Jar
-        </ul>
-    </section>
-{#    <section>#}
-{#        <h3>Random Date Picker</h3>#}
-{##}
-{#        <h4><a href="{{ show_random }}">Random</a></h4>#}
-{#        {{ random_obj }}#}
-{#    </section>#}
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-6 splash">
+                    <h1 class="welcome">Welcome To Date Jar</h1>
+                    <h3 class="ever">Ever catch yourself saying, "We should do that sometime."?  Put it in the Date Night Jar and
+                    next time you have a free night, pull out an idea.</h3>
+					<h2 class="subtitle">No More, "I don't know...what do you want to do?"</h2>
+					<form class="form-inline signup" role="form">
+{#					  <div class="form-group">#}
+{#					    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter your email address">#}
+{#					  </div>#}
+					  <button type="submit" class="btn btn-theme"><a href="{% url "login" %}">Login</a></button>
+                      <button type="submit" class="btn btn-theme"><a href="{% url "register" %}">Register</a></button>
 
-
+					</form>
+				</div>
+                <div class="col-lg-4 col-lg-offset-2 inspiration splash">
+                    <h2>Need some inspiration?</h2>
+                    <h3>Check out our Categories</h3>
+                    <ul>
+                        <li><a href="{% url "date_night_fun" %}">Date Night Fun</a></li>
+                        <li><a href="{% url "eat_drink" %}">Eat & Drink</a></li>
+                        <li><a href="{% url "fun_home" %}">Fun @ Home</a></li>
+                        <li><a href="{% url "get_sporty" %}">Get Sporty</a></li>
+                        <li><a href="{% url "day_trip" %}">Day Trip Dates</a></li>
+                        <li><a href="{% url "adventure" %}">Adventure</a></li>
+                        <li><a href="{% url "classic" %}">The Classics</a></li>
+                        <li><a href="{% url "learn" %}">Learn Together</a></li>
+                        <li><a href="{% url "weekend" %}">The Weekender</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
 
 {% endblock content %}
-
-

@@ -1,48 +1,110 @@
 {% extends "base_template.html" %}
-
+{% load staticfiles %}
 {% block title %}{% endblock title %}
-
 {% block link %} {% endblock link %}
-
 {% block content %}
-<section>
-        <h1 class="welcome">Welcome to your Date Jar, {{ user.username | capfirst }}</h1>
-        <h3><a href="{% url 'new_event' %}">Add a Date</a> or
-        <a href="{% url 'home' %}">Browse for ideas</a></h3>
-        <section id="lists">
-            <ul id="gallery">
-                <h3>Dates</h3>
-                {% for d in dates %}
-                    <li>
-                        <h4>{{ d.category }}</h4>
-                        <p>{{ d.name }},<br>{{ d.description }},<br>{{ d.location }},
-                        <br><a href="{{ d.url }}">Website</a>,
-                        <br>{{ d.address }},
-                        <br><img src="{{ d.image }}"><br></p>
-                        <a href="{% url 'done' d.id %}">Did it!</a><br>
-{#                        here i am !!!!!!!!!!!!!!!!!!!!!{{ d.id }}!!!!!!!!!!!!!!#}
-                        <a href="{% url 'remove_event' d.id %}">Delete it!</a>
-                    </li>
-                {% endfor %}
----------------------------------------------------------------------------------------------------
-                <h3>Past Dates</h3>
-                {% for d in dated %}
-                    <li>
-                        <h4>{{ d.category }}</h4>
-                        <p>{{ d.name }},<br>{{ d.description }},<br>{{ d.location }},
-                        <br><a href="{{ d.url }}">Website</a>,
-                        <br>{{ d.address }},
-                        <br><img src="{{ d.image }}"></p>
-                    <a href="{% url 'remove_event' d.id %}">Delete it!</a>
+<div id="wrapper">
 
-                    </li>
-                {% endfor %}
-            </ul>
-        </section>
-</section>
+<link href="{% static 'css/main.css' %}" rel="stylesheet">
+<script src="js/modernizr-2.6.2-respond-1.1.0.min.js"></script>
 
 
+<div class="section section-breadcrumbs">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <h1 class="welcome">Welcome to your Date Jar, {{ user.username | capfirst }}</h1>
+                <h3><a href="{% url 'new_event' %}">Add a Date</a> or
+                <a href="{% url 'home' %}">Browse for ideas</a></h3>
+            </div>
+        </div>
+    </div>
+</div>
 
+<div class="section blog-posts-wrapper">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+            <h3>Dates</h3>
+            </div>
+        <!--Dates-->
+{% for d in dates %}
+                <div class="col-md-4 col-sm-6">
+                    <div class="blog-post">
+                        <div class="post-info">
+{#								<div class="post-date">#}
+{#									<div class="date">30 JAN, 2013</div>#}
+{#								</div>#}
+{#								<div class="post-comments-count">#}
+{#									<a href="page-blog-post-right-sidebar.html" title="Show Comments"><i class="glyphicon glyphicon-comment icon-white"></i>11</a>#}
+{#								</div>#}
+                        </div>
+                        <!-- End Post Info -->
+                        <!-- Post Image -->
+                        <a href="#"><img src="{{ d.image }}" class="post-image" alt="Post Title"></a>
+                        <!-- End Post Image -->
+                        <!-- Post Title & Summary -->
+                        <div class="post-title">
+                            <h3><a href="#">{{ d.name }}</a></h3>
+                        </div>
+                        <div class="post-summary">
+                            <p>{{ d.category }}<br>{{ d.description }}. <br>{{ d.location }}<br>{{ d.address }}<br><a href="{{ d.url }}">Website</a></p>
+                        </div>
+                        <!-- End Post Title & Summary -->
+                        <div class="post-more">
+                            <a href="{% url 'done' d.id %}" class="btn btn-small">Did it!</a>
+                            <a href="{% url 'remove_event' d.id %}" class="btn btn-small">Delete it!</a>
+                        </div>
+                    </div>
+                </div>
+    {% endfor %}
+        </div>
+   </div>
+</div>
+
+
+
+<div class="section blog-posts-wrapper">
+    <div class="container">
+
+        <div class="row">
+            <div class="col-lg-12">
+        <h3>Past Dates</h3>
+        </div>
+{% for d in dated %}
+            <div class="col-md-4 col-sm-6">
+                <div class="blog-post">
+                    <div class="post-info">
+								<div class="post-date">
+									<div class="date">30 JAN, 2013</div>
+								</div>
+								<div class="post-comments-count">
+									<a href="page-blog-post-right-sidebar.html" title="Show Comments"><i class="glyphicon glyphicon-comment icon-white"></i>11</a>
+								</div>
+                    </div>
+                    <!-- End Post Info -->
+                    <!-- Post Image -->
+                    <a href="#"><img src="{{ d.image }}" class="post-image" alt="Post Title"></a>
+                    <!-- End Post Image -->
+                    <!-- Post Title & Summary -->
+                    <div class="post-title">
+                        <h3><a href="#">{{ d.name }}</a></h3>
+                    </div>
+                    <div class="post-summary">
+                        <p>{{ d.category }}<br>{{ d.description }}. <br>{{ d.location }}<br>{{ d.address }}<br><a href="{{ d.url }}">Website</a></p>
+                    </div>
+                    <!-- End Post Title & Summary -->
+                    <div class="post-more">
+                        <a href="{% url 'remove_event' d.id %}" class="btn btn-small">Delete it!</a>
+                    </div>
+                </div>
+            </div>
+    {% endfor %}
+        </div>
+    </div>
+</div>
+
+</div>
 {% endblock content %}
 
 
