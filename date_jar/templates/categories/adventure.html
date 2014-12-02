@@ -1,31 +1,68 @@
 {% extends "base_template.html" %}
-
+{% load staticfiles %}
 {% block title %}{% endblock title %}
 
 {% block link %} {% endblock link %}
 
 {% block content %}
-    <h1>Adventure!</h1>
-    <section>
-        <ul id="gallery">
-            {% for item in data %}
-            <li>
-                <h1>{{ item.name }}</h1>
-                <p>{{ item.description }}</p>
-                <p>{{ item.location }}</p>
-                <a href="{{ item.url }}" target=_blank> Check it out</a>
-                <p>{{ item.address }}</p>
-                <img src="{{ item.image }}"/>
-                <!--a href="{% url 'add_event' item.id %}">Add Event!</a-->
-                {% if user.is_authenticated %}
-                <form action="/add_event/{{ item.id }}" method="POST">
-                {% csrf_token %}
-                <input type="submit" value="Add to Date Jar"/></form>
-                {% endif %}
-            </li>
-            {% endfor %}
-        </ul>
-    </section>
 
+
+    <link href="{% static 'css/main.css' %}" rel="stylesheet">
+    <script src="js/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+
+<div id="wrapper">
+    <div class="section section-breadcrumbs">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <h1 class="welcome">Adventure!</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section blog-posts-wrapper">
+        <div class="container">
+            <div class="row">
+    {% for item in data %}
+                    <div class="col-md-4 col-sm-6">
+                        <div class="blog-post">
+                            <div class="post-info">
+    {#								<div class="post-date">#}
+    {#									<div class="date">30 JAN, 2013</div>#}
+    {#								</div>#}
+    {#								<div class="post-comments-count">#}
+    {#									<a href="page-blog-post-right-sidebar.html" title="Show Comments"><i class="glyphicon glyphicon-comment icon-white"></i>11</a>#}
+    {#								</div>#}
+                            </div>
+                            <!-- End Post Info -->
+                            <!-- Post Image -->
+                            <a href="#"><img src="{{ item.image }}" class="post-image" alt="Post Title"></a>
+                            <!-- End Post Image -->
+                            <!-- Post Title & Summary -->
+                            <div class="post-title">
+                                <h3><a href="#">{{ item.name }}</a></h3>
+                            </div>
+                            <div class="post-summary">
+                                <p><br>{{ item.description }}. <br>{{ item.location }}<br>{{ item.address }}<br> <a href="{{ item.url }}" target=_blank> Check it out</a></p>
+                            </div>
+                            <!-- End Post Title & Summary -->
+                            <div class="post-more">
+
+                    {% if user.is_authenticated %}
+                    <form action="/add_event/{{ item.id }}" method="POST">
+                    {% csrf_token %}
+                    <input type="submit" value="Add to Date Jar"/></form>
+                    {% endif %}
+{#                                <a href="{% url 'done' d.id %}" class="btn btn-small">Did it!</a>#}
+{#                                <a href="{% url 'remove_event' d.id %}" class="btn btn-small">Delete it!</a>#}
+                            </div>
+                        </div>
+                    </div>
+    {% endfor %}
+            </div>
+       </div>
+    </div>
+</div>
 {% endblock content %}
 
