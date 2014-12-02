@@ -48,14 +48,11 @@
                             </div>
                             <!-- End Post Title & Summary -->
                             <div class="post-more">
-
-                    {% if user.is_authenticated %}
-                    <form action="/add_event/{{ item.id }}" method="POST">
-                    {% csrf_token %}
-                    <input type="submit" value="Add to Date Jar"/></form>
-                    {% endif %}
-{#                                <a href="{% url 'done' d.id %}" class="btn btn-small">Did it!</a>#}
-{#                                <a href="{% url 'remove_event' d.id %}" class="btn btn-small">Delete it!</a>#}
+                                {% if user.is_authenticated %}
+                                <form action="/add_event/{{ item.id }}" method="POST">
+                                {% csrf_token %}
+                                <input class="btn btn-small" type="submit" value="Add to Date Jar"/></form>
+                                {% endif %}
                             </div>
                         </div>
                     </div>
