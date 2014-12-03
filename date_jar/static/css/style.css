@@ -14,8 +14,8 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
     font-family: 'Lato', sans-serif;
-    font-weight: 300;
-    color: #444;
+    font-weight: 400;
+    color: #ffffff;
 }
 
 h1 {
@@ -36,6 +36,9 @@ p {
     font-size: 16px;
 }
 
+.skillstar {
+    padding-right: 10px;
+}
 
 a {
     color: white;
@@ -171,8 +174,8 @@ h2.subtitle {
 	font-size: 20px;
 }
 
-.inspiration {
-    /*padding-top: 45px;*/
+.inspiration  h1 {
+    text-align: left;
 
 }
 
@@ -180,6 +183,7 @@ h2.subtitle {
     list-style: none;
     text-align: left;
     font-size: 20px;
+    line-height: 30px;
 }
 
 .splash {
@@ -187,12 +191,15 @@ h2.subtitle {
   height: auto;
   -webkit-border-radius: 3px;
   border-radius: 30px;
-  background: rgba(89, 50, 49, 0.29);
+  background: rgba(89, 50, 49, 0.62);
   text-align: center;
+  padding-bottom: 15px;
+    margin-bottom: 15px;
 }
 
 .ever {
     color: white;
+    font-weight: 200;
 }
 
 
@@ -200,6 +207,8 @@ h2.subtitle {
 #footer {
 	background: red;
 	padding: 20px 0 5px;
+    margin-top: 30px;
+
 }
 
 p.copyright {
